@@ -30,8 +30,12 @@ export default function Hero() {
         <h2 className="text-[5.5vw] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 dark:text-green-50 tracking-tight leading-tight mb-2 whitespace-nowrap overflow-visible">
           HELLO I AM RAFAT UL AMAN SAJID
         </h2>
-        <div className="text-2xl md:text-3xl font-mono text-gray-800 dark:text-green-100 font-semibold mb-6 flex items-center gap-2 h-10">
-          <span className="text-rose-600 dark:text-pink-500">const</span> <span className="text-blue-600 dark:text-blue-400">role</span> = <span className="text-amber-600 dark:text-yellow-300">"{typedText}"</span><span className="animate-pulse text-green-700 dark:text-primary">|</span>
+        <div className="text-sm sm:text-lg md:text-2xl lg:text-3xl font-mono text-gray-800 dark:text-green-100 font-semibold mb-6 flex flex-wrap items-center gap-x-2 gap-y-1 min-h-[4rem] sm:min-h-[3rem] md:min-h-10">
+          <span className="text-rose-600 dark:text-pink-500">const</span> 
+          <span className="text-blue-600 dark:text-blue-400">role</span> 
+          <span>=</span> 
+          <span className="text-amber-600 dark:text-yellow-300 break-words">"{typedText}"</span>
+          <span className="animate-pulse text-green-700 dark:text-primary -ml-1">|</span>
         </div>
 
         <p className="text-gray-600 dark:text-green-300/70 text-lg md:text-xl max-w-2xl font-mono">
