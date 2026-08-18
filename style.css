@@ -1,0 +1,339 @@
+:root {
+    --bg-color: #0b0f0c;
+    --primary-green: #00d060;
+    --text-main: #ffffff;
+    --text-muted: #9aa89d;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Background Animation Layer - Fixed Behind Everything */
+.animation-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-color);
+}
+
+.bg-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 35% 40%, rgba(0, 208, 96, 0.4) 0%, rgba(11, 15, 12, 0.8) 70%);
+    pointer-events: none;
+    z-index: 1; /* Above canvas, below content */
+}
+
+canvas {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    object-position: center 35%; /* Adjusted to center the face */
+    opacity: 0.7; /* Blend with the glow */
+}
+
+/* Main Content Overlay */
+.main-content {
+    position: relative;
+    z-index: 10;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+nav {
+    display: flex;
+    gap: 2rem;
+}
+
+nav a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--primary-green);
+}
+
+.btn-primary {
+    background-color: var(--text-main);
+    color: #000;
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-green);
+    color: #fff;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 4rem;
+    position: relative;
+}
+
+.hero-left h4 {
+    color: var(--text-main);
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+}
+
+.hero-left h1 {
+    font-size: 5rem;
+    line-height: 1.1;
+    margin: 0;
+    font-weight: 700;
+}
+
+.hero-right {
+    margin-top: 8rem;
+}
+
+.hero-right h2 {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.hero-right p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Services Grid */
+.services {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 3rem;
+    background: rgba(11, 15, 12, 0.4);
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    padding: 2rem;
+}
+
+.service-item .service-num {
+    color: var(--primary-green);
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.service-item p {
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Trust Banner */
+.trust-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 2rem 3rem;
+}
+
+.trust-banner p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0;
+    min-width: 150px;
+}
+
+.logos {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+/* Approach Section */
+.approach {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    background: rgba(11, 15, 12, 0.6);
+    backdrop-filter: blur(10px);
+    padding: 3rem;
+    border-radius: 24px;
+}
+
+.text-green {
+    color: var(--primary-green);
+    font-weight: 500;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.approach-left h2 {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.approach-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.approach-desc {
+    font-size: 1.5rem;
+    line-height: 1.4;
+    margin-bottom: 2rem;
+}
+
+.cta-row {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.cta-row .small-text {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.cta-row .btn-primary {
+    background-color: rgba(0, 208, 96, 0.15);
+    color: var(--primary-green);
+    border: 1px solid var(--primary-green);
+}
+.cta-row .btn-primary:hover {
+    background-color: var(--primary-green);
+    color: #fff;
+}
+
+/* Bottom Cards */
+.bottom-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+    height: 200px; /* Just showing the top */
+    overflow: hidden;
+}
+
+.glass-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px 24px 0 0;
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+.green-tint {
+    background: rgba(0, 208, 96, 0.05);
+}
+
+.icon-placeholder {
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-green);
+}
+
+.content-spacer {
+    /* If the content height doesn't exceed 300vh, this will allow scrolling for animation to finish */
+    height: 150vh;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .hero, .approach {
+        flex-direction: column;
+        gap: 3rem;
+    }
+    .hero-right {
+        margin-top: 2rem;
+    }
+    .services {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .trust-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2rem;
+    }
+    .logos {
+        flex-wrap: wrap;
+    }
+    .hero-left h1 {
+        font-size: 3.5rem;
+    }
+}
+@media (max-width: 600px) {
+    .services {
+        grid-template-columns: 1fr;
+    }
+    .bottom-cards {
+        grid-template-columns: 1fr;
+    }
+    header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
