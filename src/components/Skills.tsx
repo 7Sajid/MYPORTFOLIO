@@ -37,9 +37,6 @@ export default function Skills() {
         {skillCategories.map((category, idx) => (
           <div key={idx} className="code-card flex flex-col gap-4 hover:bg-green-50 dark:hover:bg-primary/5 transition-colors">
             <div className="flex items-center gap-3 mb-2">
-              <div className="p-2 bg-transparent border border-green-600/30 dark:border-primary/30 text-green-700 dark:text-primary">
-                {category.icon}
-              </div>
               <h4 className="text-lg font-bold text-gray-900 dark:text-green-50">"{category.title}"</h4>
             </div>
             

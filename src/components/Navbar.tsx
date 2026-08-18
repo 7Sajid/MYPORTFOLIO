@@ -1,4 +1,3 @@
-import { Code, Briefcase, Award, Mail } from 'lucide-react';
 
 export default function Navbar() {
   return (
