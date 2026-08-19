@@ -26,7 +26,7 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={() => setIsDark(!isDark)}
-      className="p-2 border border-green-600/30 dark:border-primary/30 text-green-700 dark:text-primary hover:bg-green-50 dark:hover:bg-primary/5 transition-colors group flex items-center justify-center relative w-10 h-10"
+      className="p-2 border border-primary/30 dark:border-primary/30 text-primary dark:text-primary hover:bg-primary/10 dark:hover:bg-primary/5 transition-colors group flex items-center justify-center relative w-10 h-10"
       aria-label="Toggle theme"
     >
       {/* Sun Icon (shows in dark mode, to switch to light) */}
@@ -49,3 +49,4 @@ export default function ThemeToggle() {
     </button>
   );
 }
+

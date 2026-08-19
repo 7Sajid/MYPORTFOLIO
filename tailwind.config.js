@@ -8,8 +8,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#0b0f0c',
-        primary: '#00d060',
+        background: '#0d1117',
+        primary: '#79c0ff',
+        accent: '#39d353',
+        secondary: '#ffd33d',
       },
       fontFamily: {
         sans: ['"Fira Code"', 'monospace'],

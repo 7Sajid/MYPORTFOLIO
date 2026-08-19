@@ -6,7 +6,7 @@
 .signature-text {
   font-family: 'Caveat', cursive;
   fill: transparent;
-  stroke: #4ade80;
+  stroke: #79c0ff;
   stroke-width: 1.5px;
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
@@ -24,16 +24,16 @@
 
 @keyframes fill-signature {
   to {
-    fill: #4ade80;
+    fill: #79c0ff;
   }
 }
 
 @keyframes neon-pulse {
   from {
-    filter: drop-shadow(0 0 2px #4ade80) drop-shadow(0 0 5px #4ade80);
+    filter: drop-shadow(0 0 2px #79c0ff) drop-shadow(0 0 5px #79c0ff);
   }
   to {
-    filter: drop-shadow(0 0 5px #4ade80) drop-shadow(0 0 15px #4ade80) drop-shadow(0 0 25px #22c55e);
+    filter: drop-shadow(0 0 5px #79c0ff) drop-shadow(0 0 15px #79c0ff) drop-shadow(0 0 25px #39d353);
   }
 }body {
   @apply bg-white dark:bg-background text-gray-900 dark:text-green-50 antialiased overflow-x-hidden font-mono transition-colors duration-300;
@@ -48,9 +48,9 @@
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0b0f0c; 
+  background: #0d1117; 
 }
 ::-webkit-scrollbar-thumb {
-  background: #00d060; 
+  background: #79c0ff; 
   border-radius: 4px;
 }

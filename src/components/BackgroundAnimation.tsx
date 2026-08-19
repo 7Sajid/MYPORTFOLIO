@@ -51,9 +51,9 @@ export default function BackgroundAnimation() {
       // Color palette: mostly white/blueish, some yellowish
       const colorRand = Math.random();
       let color = '#ffffff';
-      if (colorRand > 0.8) color = '#a3c2ff'; // blueish young stars
-      else if (colorRand > 0.6) color = '#ffdfa3'; // yellowish old stars
-      else if (colorRand > 0.95) color = '#22c55e'; // occasional green (portfolio theme)
+      if (colorRand > 0.8) color = '#79c0ff'; // Electric Blue
+      else if (colorRand > 0.6) color = '#ffd33d'; // Neon Yellow
+      else if (colorRand > 0.95) color = '#39d353'; // Bright Cyan accent
 
       return {
         theta,
@@ -93,7 +93,7 @@ export default function BackgroundAnimation() {
       // Draw core glow
       const gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, 150);
       gradient.addColorStop(0, 'rgba(255, 255, 255, 0.15)');
-      gradient.addColorStop(0.2, 'rgba(163, 194, 255, 0.05)');
+      gradient.addColorStop(0.2, 'rgba(121, 192, 255, 0.05)'); // Soft electric blue core
       gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
       ctx.fillStyle = gradient;
       ctx.beginPath();
@@ -136,7 +136,7 @@ export default function BackgroundAnimation() {
   return (
     <div className="fixed top-0 left-0 w-full h-screen -z-10 bg-white dark:bg-background flex items-center justify-center transition-colors duration-300 overflow-hidden">
       {/* Solid background */}
-      <div className="absolute top-0 left-0 w-full h-full bg-gray-100 dark:bg-[#050806] -z-10 transition-colors duration-300" />
+      <div className="absolute top-0 left-0 w-full h-full bg-gray-100 dark:bg-[#0d1117] -z-10 transition-colors duration-300" />
 
       <canvas 
         ref={canvasRef} 
@@ -144,9 +144,10 @@ export default function BackgroundAnimation() {
       />
       
       {/* Light/Dark mode gradient overlays to blend with the rest of the page */}
-      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_35%_40%,_rgba(255,255,255,0.7)_0%,_rgba(255,255,255,0.95)_70%)] dark:bg-[radial-gradient(circle_at_35%_40%,_rgba(0,208,96,0.1)_0%,_rgba(11,15,12,0.9)_70%)] pointer-events-none z-10 transition-colors duration-300" />
+      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_35%_40%,_rgba(255,255,255,0.7)_0%,_rgba(255,255,255,0.95)_70%)] dark:bg-[radial-gradient(circle_at_35%_40%,_rgba(121,192,255,0.05)_0%,_rgba(13,17,23,0.9)_70%)] pointer-events-none z-10 transition-colors duration-300" />
       
       <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent dark:from-background dark:to-transparent z-10 transition-colors duration-300" />
     </div>
   );
 }
+
