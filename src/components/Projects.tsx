@@ -74,7 +74,7 @@ export default function Projects() {
               </div>
               <h4 className="text-xl md:text-2xl font-bold text-secondary dark:text-secondary mb-4">"{project.title}"</h4>
               
-              <p className="text-gray-700 dark:text-primary/80/80 mb-6 leading-relaxed">
+              <p className="text-gray-700 dark:text-primary/80 mb-6 leading-relaxed">
                 {project.description}
               </p>
               
@@ -105,4 +105,5 @@ export default function Projects() {
     </section>
   );
 }
+
 

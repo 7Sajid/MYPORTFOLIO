@@ -18,7 +18,7 @@ export default function Education() {
           <h4 className="text-lg font-bold text-secondary dark:text-secondary">degree: "Bachelor of Technology – CSE"</h4>
           <p className="text-primary dark:text-primary text-sm">institution: "Lovely Professional University - INDIA | 1st Division"</p>
           <p className="text-gray-500 dark:text-gray-400 text-sm">period: "Jul 2018 – Jan 2023"</p>
-          <ul className="list-none mt-2 text-sm text-gray-700 dark:text-primary/80/80 space-y-1">
+          <ul className="list-none mt-2 text-sm text-gray-700 dark:text-primary/80 space-y-1">
             <li><span className="text-primary dark:text-primary">--</span> Final year project: AI-based solution for automated system monitoring and anomaly detection.</li>
             <li><span className="text-primary dark:text-primary">--</span> Completed major and minor projects in web development, networking, and cloud computing.</li>
             <li><span className="text-primary dark:text-primary">--</span> Achieved Python programming certifications from reputed online platforms.</li>
@@ -61,7 +61,7 @@ export default function Education() {
           <h3 className="text-primary dark:text-primary font-semibold tracking-wide text-sm mb-4"><span className="text-rose-600 dark:text-pink-500">export const</span> <span className="text-blue-600 dark:text-blue-400">Publications</span></h3>
           <div className="code-card hover:bg-primary/10 dark:hover:bg-primary/5 transition-colors">
             <h4 className="font-bold text-secondary dark:text-secondary mb-1">"Interpretation on the Google Cloud Platform and Its Wide Cloud Services"</h4>
-            <p className="text-sm text-gray-600 dark:text-primary/70/70 mb-2">// International Journal of Security and Privacy in Pervasive Computing (Nov 2022)</p>
+            <p className="text-sm text-gray-600 dark:text-primary/70 mb-2">// International Journal of Security and Privacy in Pervasive Computing (Nov 2022)</p>
             <a href="https://doi.org/10.4018/IJSPPC.313586" target="_blank" rel="noreferrer" className="text-primary dark:text-primary text-sm hover:underline border-b border-primary/50 dark:border-primary border-dashed">
               DOI: 10.4018/IJSPPC.313586
             </a>
@@ -71,4 +71,5 @@ export default function Education() {
     </section>
   );
 }
+
 

@@ -12,7 +12,7 @@ export default function Contact() {
               Contact
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-primary mb-4">&gt;_ Get in touch</h2>
-            <p className="text-gray-600 dark:text-primary/70/70 text-lg">
+            <p className="text-gray-600 dark:text-primary/70 text-lg">
               {'//'} Have questions or ready to transform your infrastructure?
             </p>
           </div>
@@ -25,7 +25,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-bold text-gray-900 dark:text-white group-hover:text-primary dark:group-hover:text-primary transition-colors">Email us</h4>
-                  <p className="text-sm text-gray-600 dark:text-primary/70/70">amanshazid786@gmail.com</p>
+                  <p className="text-sm text-gray-600 dark:text-primary/70">amanshazid786@gmail.com</p>
                 </div>
               </div>
               <ArrowUpRight size={20} className="text-primary dark:text-primary opacity-50 group-hover:opacity-100 transition-opacity" />
@@ -38,7 +38,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-bold text-gray-900 dark:text-white group-hover:text-primary dark:group-hover:text-primary transition-colors">WhatsApp / Call</h4>
-                  <p className="text-sm text-gray-600 dark:text-primary/70/70">+880 1533-301091</p>
+                  <p className="text-sm text-gray-600 dark:text-primary/70">+880 1533-301091</p>
                 </div>
               </div>
               <ArrowUpRight size={20} className="text-primary dark:text-primary opacity-50 group-hover:opacity-100 transition-opacity" />
@@ -51,7 +51,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-bold text-gray-900 dark:text-white group-hover:text-primary dark:group-hover:text-primary transition-colors">Our location</h4>
-                  <p className="text-sm text-gray-600 dark:text-primary/70/70">Dhaka, Bangladesh</p>
+                  <p className="text-sm text-gray-600 dark:text-primary/70">Dhaka, Bangladesh</p>
                 </div>
               </div>
               <ArrowUpRight size={20} className="text-primary dark:text-primary opacity-50 group-hover:opacity-100 transition-opacity" />
@@ -104,4 +104,5 @@ export default function Contact() {
     </section>
   );
 }
+
 

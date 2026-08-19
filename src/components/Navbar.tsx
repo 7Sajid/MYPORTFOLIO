@@ -5,9 +5,9 @@ export default function Navbar() {
       <div className="text-2xl font-bold text-gray-900 dark:text-white tracking-tight"><span className="text-primary dark:text-primary">$_</span> Rafat<span className="text-primary dark:text-primary">()</span></div>
       
       <nav className="hidden md:flex gap-8 text-sm font-medium">
-        <a href="#about" className="text-gray-600 dark:text-primary/70/70 hover:text-primary dark:hover:text-primary transition-colors">"About"</a>
-        <a href="#experience" className="text-gray-600 dark:text-primary/70/70 hover:text-primary dark:hover:text-primary transition-colors">"Experience"</a>
-        <a href="#skills" className="text-gray-600 dark:text-primary/70/70 hover:text-primary dark:hover:text-primary transition-colors">"Skills"</a>
+        <a href="#about" className="text-gray-600 dark:text-primary/70 hover:text-primary dark:hover:text-primary transition-colors">"About"</a>
+        <a href="#experience" className="text-gray-600 dark:text-primary/70 hover:text-primary dark:hover:text-primary transition-colors">"Experience"</a>
+        <a href="#skills" className="text-gray-600 dark:text-primary/70 hover:text-primary dark:hover:text-primary transition-colors">"Skills"</a>
       </nav>
 
       <div className="flex items-center gap-4">
@@ -24,4 +24,5 @@ export default function Navbar() {
     </header>
   );
 }
+
 

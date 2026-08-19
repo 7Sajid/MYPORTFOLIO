@@ -57,7 +57,7 @@ export default function Experience() {
                   [{exp.period}]
                 </div>
               </div>
-              <ul className="list-none space-y-2 text-gray-700 dark:text-primary/80/80 text-sm md:text-base">
+              <ul className="list-none space-y-2 text-gray-700 dark:text-primary/80 text-sm md:text-base">
                 {exp.points.map((point, pIdx) => (
                   <li key={pIdx} className="flex gap-2">
                     <span className="text-primary/60 dark:text-primary/60 shrink-0">~</span> 
@@ -72,4 +72,5 @@ export default function Experience() {
     </section>
   );
 }
+
 

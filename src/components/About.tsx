@@ -22,7 +22,7 @@ export default function About() {
         </div>
 
         <div className="md:w-1/2 flex flex-col gap-6">
-          <p className="text-gray-700 dark:text-primary/80/80 leading-relaxed text-lg">
+          <p className="text-gray-700 dark:text-primary/80 leading-relaxed text-lg">
             <span className="text-gray-500 dark:text-primary mr-2">{'//'}</span>
             I'm a passionate Software Engineer based in Bangladesh with a strong foundation in modern web technologies. My journey in tech started with a curiosity about how things work under the hood, which quickly turned into a career building robust and scalable applications.
           </p>
@@ -32,4 +32,5 @@ export default function About() {
     </section>
   );
 }
+
 
