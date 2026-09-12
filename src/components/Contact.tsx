@@ -19,25 +19,22 @@ export default function Contact() {
     const email = formData.get('email') as string;
     const message = formData.get('message') as string;
 
+    // 1. Immediately open WhatsApp (Prevents mobile popup blockers & bypasses API errors)
+    const whatsappMessage = encodeURIComponent(`Hi, I just sent a message from your portfolio!\nName: ${name}\nEmail: ${email}`);
+    window.open(`https://wa.me/8801533301091?text=${whatsappMessage}`, '_blank');
+
+    setSuccess(true);
+    form.reset();
+
+    // 2. Send the email in the background
     try {
-      const response = await fetch('/api/contact', {
+      await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, message, type: 'contact' })
       });
-
-      if (!response.ok) {
-        throw new Error('Failed to send request');
-      }
-
-      setSuccess(true);
-      form.reset();
-
-      // Redirect to WhatsApp
-      const whatsappMessage = encodeURIComponent(`Hi, I just sent a message from your portfolio!\nName: ${name}\nEmail: ${email}`);
-      window.open(`https://wa.me/8801533301091?text=${whatsappMessage}`, '_blank');
     } catch (err) {
-      setError('Something went wrong. Please try again later.');
+      console.error('Email failed to send in background', err);
     } finally {
       setIsLoading(false);
     }
