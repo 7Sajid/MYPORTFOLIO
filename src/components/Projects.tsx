@@ -1,4 +1,5 @@
 import { ExternalLink, Lock } from 'lucide-react';
+import Showcase from './Showcase';
 
 const projects = [
   {
@@ -21,11 +22,11 @@ const projects = [
   },
   {
     id: 3,
-    title: "SNAKE GAME",
+    title: "PC SNAKE GAME",
     description: "A Snake game That U Can Play On Your Free Time. Developed a classic retro-style Snake game with responsive controls, score tracking, and increasing difficulty levels.",
     image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    tech: ["JavaScript", "HTML5 Canvas", "CSS3", "Game Logic"],
-    link: "https://github.com/7Sajid",
+    tech: ["Python", "CSS3", "Game Logic"],
+    link: "https://github.com/7Sajid/Snake-game-Using-python",
     isInternal: false
   },
   {
@@ -33,8 +34,8 @@ const projects = [
     title: "SMART CITY PREDICTOR",
     description: "Smart City Project Used to Find-out A City Smart Or Not. Analyzes urban data metrics (infrastructure, connectivity, green energy) to evaluate and score the 'smartness' of a city.",
     image: "https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    tech: ["Python", "Data Analytics", "Machine Learning", "React"],
-    link: "https://github.com/7Sajid",
+    tech: ["C++", "Data Analytics", "Machine Learning",],
+    link: "https://github.com/7Sajid/Smart-City-Finder",
     isInternal: false
   },
   {
@@ -43,7 +44,7 @@ const projects = [
     description: "Intelligent Voice Recognition Assistant for Desktop. A voice-controlled AI desktop assistant capable of handling system commands, web searches, opening applications, and daily tasks.",
     image: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     tech: ["Python", "SpeechRecognition", "NLP", "pyttsx3"],
-    link: "https://github.com/7Sajid",
+    link: "https://github.com/7Sajid/Intelligent-Voice-Recognition-Assistant",
     isInternal: false
   }
 ];
@@ -61,23 +62,23 @@ export default function Projects() {
           <div key={project.id} className="code-card flex flex-col md:flex-row gap-6 hover:bg-primary/10 dark:hover:bg-primary/5 transition-colors group">
             <div className="md:w-5/12 overflow-hidden border border-primary/20 dark:border-primary/20 relative">
               <div className="absolute inset-0 bg-primary/20 dark:bg-primary/20 mix-blend-multiply group-hover:opacity-0 transition-opacity z-10"></div>
-              <img 
-                src={project.image} 
-                alt={project.title} 
+              <img
+                src={project.image}
+                alt={project.title}
                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
               />
             </div>
-            
+
             <div className="md:w-7/12 flex flex-col justify-center">
               <div className="flex items-center gap-2 mb-2 text-primary dark:text-primary font-mono text-sm">
                 <span>{`// Project 0${idx + 1}`}</span>
               </div>
               <h4 className="text-xl md:text-2xl font-bold text-secondary dark:text-secondary mb-4">"{project.title}"</h4>
-              
+
               <p className="text-gray-700 dark:text-primary/80 mb-6 leading-relaxed">
                 {project.description}
               </p>
-              
+
               <div className="flex flex-wrap gap-2 mb-6">
                 {project.tech.map((tech, tIdx) => (
                   <span key={tIdx} className="px-3 py-1 bg-transparent border border-primary/30 dark:border-primary/30 text-xs text-gray-600 dark:text-primary/70">
@@ -85,7 +86,7 @@ export default function Projects() {
                   </span>
                 ))}
               </div>
-              
+
               <div className="flex gap-4 mt-auto">
                 {project.isInternal ? (
                   <button className="flex items-center gap-2 text-sm font-bold text-gray-500 dark:text-gray-500 cursor-not-allowed" title="Classified / Internal System">
@@ -102,6 +103,7 @@ export default function Projects() {
         ))}
       </div>
       <div className="text-primary dark:text-primary font-semibold tracking-wide text-sm">];</div>
+      <Showcase />
     </section>
   );
 }

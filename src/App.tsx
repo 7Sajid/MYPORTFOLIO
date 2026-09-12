@@ -9,6 +9,7 @@ import Experience from './components/Experience';
 import Education from './components/Education';
 import Certificates from './components/Certificates';
 import Projects from './components/Projects';
+import Showcase from './components/Showcase';
 import Contact from './components/Contact';
 
 function App() {

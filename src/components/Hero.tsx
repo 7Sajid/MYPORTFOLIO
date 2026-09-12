@@ -43,12 +43,15 @@ export default function Hero() {
           Building scalable, high-performance web applications and automated systems. Bridging the gap between design and robust backend architecture.
         </p>
 
-        <div className="flex gap-4 mt-8">
+        <div className="flex gap-4 mt-8 flex-wrap">
           <a href="#experience" className="px-6 py-3 bg-primary/20 dark:bg-primary/10 border border-primary/30 dark:border-primary/30 text-primary dark:text-primary font-bold hover:bg-primary/30 dark:hover:bg-primary/20 transition-all">
             $ cd experience
           </a>
           <a href="#projects" className="px-6 py-3 bg-transparent border border-gray-300 dark:border-white/20 text-gray-700 dark:text-white font-bold hover:bg-gray-100 dark:hover:bg-white/5 transition-all">
             cat projects.md
+          </a>
+          <a href="https://drive.google.com/file/d/1KEnzAM3WOS0XVSixDsrEJnjF2yDPUzgB/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="px-6 py-3 bg-yellow-400 border border-yellow-500 text-black font-bold hover:bg-yellow-300 transition-all shadow-[0_0_10px_rgba(250,204,21,0.3)] hover:shadow-[0_0_15px_rgba(250,204,21,0.6)]">
+            Download CV
           </a>
         </div>
       </div>
