@@ -39,14 +39,27 @@ export default async function handler(
       <p>${message.replace(/\n/g, '<br>')}</p>
     `;
 
-    // Send the email to yourself (and optionally CC the sender or replyTo the sender)
+    // Send the email to yourself
     await transporter.sendMail({
       from: process.env.GMAIL_USER,
-      to: process.env.GMAIL_USER, // Send to your own email
+      to: process.env.GMAIL_USER, 
       replyTo: email,
       subject: subject,
       html: htmlBody,
     });
+
+    // If it's a contact form, ALSO send a silent WhatsApp notification using CallMeBot
+    if (type === 'contact' && process.env.WHATSAPP_API_KEY) {
+      const waText = encodeURIComponent(`*New Portfolio Lead!*\nName: ${name}\nEmail: ${email}\nMessage: ${message}`);
+      const waUrl = `https://api.callmebot.com/whatsapp.php?phone=8801533301091&text=${waText}&apikey=${process.env.WHATSAPP_API_KEY}`;
+      
+      try {
+        await fetch(waUrl);
+      } catch (waError) {
+        console.error('WhatsApp Bot Error:', waError);
+        // We don't fail the whole request if just the WhatsApp bot fails
+      }
+    }
 
     return res.status(200).json({ message: 'Message sent successfully!' });
   } catch (error) {
