@@ -39,29 +39,30 @@ export default function Experience() {
   return (
     <section id="experience" className="flex flex-col gap-8">
       <div>
-        <h3 className="text-primary dark:text-primary font-semibold tracking-wide text-sm mb-2"><span className="text-rose-600 dark:text-pink-500">await</span> <span className="text-blue-600 dark:text-blue-400">fetch</span>(<span className="text-secondary dark:text-secondary">"/api/v1/career-journey"</span>)</h3>
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-primary">&gt;_ Professional Experience</h2>
+        <h3 className="text-blue-600 dark:text-blue-400 font-semibold tracking-wide text-sm mb-2 uppercase">
+          Career Journey
+        </h3>
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">Professional Experience</h2>
       </div>
 
-      <div className="flex flex-col gap-8 border-l border-primary/30 dark:border-primary/30 pl-6 ml-2">
+      <div className="flex flex-col gap-8 border-l border-blue-600/30 dark:border-blue-400/30 pl-6 ml-2">
         {experiences.map((exp, idx) => (
           <div key={idx} className="relative">
-            <div className="absolute -left-[33px] top-1 h-4 w-4 bg-white dark:bg-background border-2 border-primary dark:border-primary"></div>
-            <div className="code-card hover:bg-primary/10 dark:hover:bg-primary/5 transition-colors">
+            <div className="absolute -left-[33px] top-4 h-4 w-4 rounded-full bg-blue-600 dark:bg-blue-400 border-2 border-white dark:border-slate-900 shadow-sm"></div>
+            <div className="code-card">
               <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
                 <div>
-                  <h4 className="text-xl font-bold text-secondary dark:text-secondary">"{exp.role}"</h4>
-                  <div className="text-primary dark:text-primary font-medium mt-1">@ {exp.company}</div>
+                  <h4 className="text-xl font-bold text-gray-900 dark:text-white">{exp.role}</h4>
+                  <div className="text-blue-600 dark:text-blue-400 font-semibold mt-1">{exp.company}</div>
                 </div>
-                <div className="text-sm text-gray-500 dark:text-gray-400 mt-2 md:mt-0 border border-primary/30 dark:border-primary/30 px-3 py-1">
-                  [{exp.period}]
+                <div className="text-sm font-medium text-gray-500 dark:text-gray-400 mt-2 md:mt-0 bg-gray-100 dark:bg-slate-800 rounded-md px-3 py-1">
+                  {exp.period}
                 </div>
               </div>
-              <ul className="list-none space-y-2 text-gray-700 dark:text-primary/80 text-sm md:text-base">
+              <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300 text-sm md:text-base">
                 {exp.points.map((point, pIdx) => (
-                  <li key={pIdx} className="flex gap-2">
-                    <span className="text-primary/60 dark:text-primary/60 shrink-0">~</span> 
-                    <span>"{point}"</span>
+                  <li key={pIdx}>
+                    {point}
                   </li>
                 ))}
               </ul>

@@ -53,15 +53,18 @@ export default function Projects() {
   return (
     <section id="projects" className="flex flex-col gap-8">
       <div>
-        <h3 className="text-primary dark:text-primary font-semibold tracking-wide text-sm mb-2"><span className="text-rose-600 dark:text-pink-500">const</span> <span className="text-blue-600 dark:text-blue-400">deployedProjects</span> = [</h3>
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-primary">&gt;_ cat projects.md</h2>
+        <h3 className="text-blue-600 dark:text-blue-400 font-semibold tracking-wide text-sm mb-2 uppercase">
+          Featured Work
+        </h3>
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">Recent Projects</h2>
       </div>
 
-      <div className="flex flex-col gap-12 pl-4 border-l border-primary/30 dark:border-primary/30 ml-2">
-        {projects.map((project, idx) => (
-          <div key={project.id} className="code-card flex flex-col md:flex-row gap-6 hover:bg-primary/10 dark:hover:bg-primary/5 transition-colors group">
-            <div className="md:w-5/12 overflow-hidden border border-primary/20 dark:border-primary/20 relative">
-              <div className="absolute inset-0 bg-primary/20 dark:bg-primary/20 mix-blend-multiply group-hover:opacity-0 transition-opacity z-10"></div>
+      <div className="flex flex-col gap-12 pl-4 border-l border-blue-600/30 dark:border-blue-400/30 ml-2">
+        {projects.map((project) => (
+          <div key={project.id} className="code-card flex flex-col md:flex-row gap-6 group relative">
+            <div className="absolute -left-[25px] top-4 h-4 w-4 rounded-full bg-blue-600 dark:bg-blue-400 border-2 border-white dark:border-slate-900 shadow-sm z-10"></div>
+            <div className="md:w-5/12 overflow-hidden rounded-lg border border-gray-200 dark:border-slate-700 relative">
+              <div className="absolute inset-0 bg-blue-600/20 dark:bg-blue-400/20 mix-blend-multiply group-hover:opacity-0 transition-opacity z-10"></div>
               <img
                 src={project.image}
                 alt={project.title}
@@ -70,18 +73,15 @@ export default function Projects() {
             </div>
 
             <div className="md:w-7/12 flex flex-col justify-center">
-              <div className="flex items-center gap-2 mb-2 text-primary dark:text-primary font-mono text-sm">
-                <span>{`// Project 0${idx + 1}`}</span>
-              </div>
-              <h4 className="text-xl md:text-2xl font-bold text-secondary dark:text-secondary mb-4">"{project.title}"</h4>
+              <h4 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-4">{project.title}</h4>
 
-              <p className="text-gray-700 dark:text-primary/80 mb-6 leading-relaxed">
+              <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
                 {project.description}
               </p>
 
               <div className="flex flex-wrap gap-2 mb-6">
                 {project.tech.map((tech, tIdx) => (
-                  <span key={tIdx} className="px-3 py-1 bg-transparent border border-primary/30 dark:border-primary/30 text-xs text-gray-600 dark:text-primary/70">
+                  <span key={tIdx} className="px-3 py-1 bg-gray-100 dark:bg-slate-800 rounded-md border border-gray-200 dark:border-slate-700 text-xs font-medium text-gray-700 dark:text-gray-300">
                     {tech}
                   </span>
                 ))}
@@ -93,7 +93,7 @@ export default function Projects() {
                     <Lock size={16} /> Internal Access Only
                   </button>
                 ) : (
-                  <a href={project.link} className="flex items-center gap-2 text-sm font-bold text-gray-900 dark:text-white hover:text-primary dark:hover:text-primary transition-colors">
+                  <a href={project.link} className="flex items-center gap-2 text-sm font-bold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors">
                     <ExternalLink size={16} /> View Deployment
                   </a>
                 )}
@@ -102,7 +102,6 @@ export default function Projects() {
           </div>
         ))}
       </div>
-      <div className="text-primary dark:text-primary font-semibold tracking-wide text-sm">];</div>
       <Showcase />
     </section>
   );
