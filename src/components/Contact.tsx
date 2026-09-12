@@ -1,7 +1,48 @@
 import { Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 export default function Contact() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setError('');
+    setSuccess(false);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const name = formData.get('name') as string;
+    const email = formData.get('email') as string;
+    const message = formData.get('message') as string;
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message, type: 'contact' })
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send request');
+      }
+
+      setSuccess(true);
+      form.reset();
+
+      // Redirect to WhatsApp
+      const whatsappMessage = encodeURIComponent(`Hi, I just sent a message from your portfolio!\nName: ${name}\nEmail: ${email}`);
+      window.open(`https://wa.me/8801533301091?text=${whatsappMessage}`, '_blank');
+    } catch (err) {
+      setError('Something went wrong. Please try again later.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <section className="flex flex-col gap-12 border-t border-gray-200 dark:border-slate-800 pt-16">
       <div className="flex flex-col md:flex-row gap-12">
@@ -62,7 +103,7 @@ export default function Contact() {
 
         {/* Right Side: Form */}
         <div className="md:w-1/2">
-          <form className="code-card flex flex-col gap-5">
+          <form onSubmit={handleSubmit} className="code-card flex flex-col gap-5">
             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Send a Message</h3>
             
             <div className="flex flex-col gap-2">
@@ -70,6 +111,8 @@ export default function Contact() {
               <input 
                 type="text" 
                 id="name" 
+                name="name"
+                required
                 className="w-full p-3 rounded-lg border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none transition-shadow"
                 placeholder="Enter your name..."
               />
@@ -80,6 +123,8 @@ export default function Contact() {
               <input 
                 type="email" 
                 id="email" 
+                name="email"
+                required
                 className="w-full p-3 rounded-lg border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none transition-shadow"
                 placeholder="Enter your email..."
               />
@@ -89,18 +134,24 @@ export default function Contact() {
               <label htmlFor="message" className="text-sm text-gray-700 dark:text-gray-300 font-bold">Message</label>
               <textarea 
                 id="message" 
+                name="message"
+                required
                 rows={5}
                 className="w-full p-3 rounded-lg border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none transition-shadow resize-none"
                 placeholder="Enter your message..."
               ></textarea>
             </div>
 
+            {error && <p className="text-red-500 text-sm">{error}</p>}
+            {success && <p className="text-green-500 text-sm">Message sent successfully! Opening WhatsApp...</p>}
+
             <div className="flex flex-col gap-3 mt-2">
               <button 
-                type="button" 
-                className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg shadow-md hover:shadow-lg transition-all"
+                type="submit" 
+                disabled={isLoading}
+                className="w-full py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-bold rounded-lg shadow-md hover:shadow-lg transition-all"
               >
-                Submit Message
+                {isLoading ? 'Sending...' : 'Submit Message'}
               </button>
               
               <Link 

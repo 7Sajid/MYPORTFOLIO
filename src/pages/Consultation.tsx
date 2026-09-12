@@ -5,11 +5,39 @@ import BackgroundAnimation from '../components/BackgroundAnimation';
 
 export default function Consultation() {
   const [submitted, setSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Simulate form submission
-    setSubmitted(true);
+    setIsLoading(true);
+    setError('');
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    
+    const name = `${formData.get('firstName')} ${formData.get('lastName')}`;
+    const email = formData.get('email');
+    const service = formData.get('service');
+    const message = `Company: ${formData.get('company')}\nService: ${service}\n\nDetails: ${formData.get('message')}`;
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message, type: 'consultation' })
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send request');
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      setError('Something went wrong. Please try again later.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   if (submitted) {
@@ -100,28 +128,28 @@ export default function Consultation() {
                 <div className="grid grid-cols-2 gap-5">
                   <div className="flex flex-col gap-2">
                     <label htmlFor="firstName" className="font-semibold text-gray-700 dark:text-gray-300 text-sm">First Name</label>
-                    <input type="text" id="firstName" required className="w-full p-3 rounded-lg border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none transition-shadow" placeholder="John" />
+                    <input type="text" id="firstName" name="firstName" required className="w-full p-3 rounded-lg border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none transition-shadow" placeholder="John" />
                   </div>
                   <div className="flex flex-col gap-2">
                     <label htmlFor="lastName" className="font-semibold text-gray-700 dark:text-gray-300 text-sm">Last Name</label>
-                    <input type="text" id="lastName" required className="w-full p-3 rounded-lg border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none transition-shadow" placeholder="Doe" />
+                    <input type="text" id="lastName" name="lastName" required className="w-full p-3 rounded-lg border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none transition-shadow" placeholder="Doe" />
                   </div>
                 </div>
                 
                 <div className="flex flex-col gap-2">
                   <label htmlFor="email" className="font-semibold text-gray-700 dark:text-gray-300 text-sm">Work Email</label>
-                  <input type="email" id="email" required className="w-full p-3 rounded-lg border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none transition-shadow" placeholder="john@company.com" />
+                  <input type="email" id="email" name="email" required className="w-full p-3 rounded-lg border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none transition-shadow" placeholder="john@company.com" />
                 </div>
                 
                 <div className="flex flex-col gap-2">
                   <label htmlFor="company" className="font-semibold text-gray-700 dark:text-gray-300 text-sm">Company Name</label>
-                  <input type="text" id="company" className="w-full p-3 rounded-lg border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none transition-shadow" placeholder="Company Inc." />
+                  <input type="text" id="company" name="company" className="w-full p-3 rounded-lg border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none transition-shadow" placeholder="Company Inc." />
                 </div>
                 
                 <div className="flex flex-col gap-2">
                   <label htmlFor="service" className="font-semibold text-gray-700 dark:text-gray-300 text-sm">Service of Interest</label>
-                  <select id="service" required className="w-full p-3 rounded-lg border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none transition-shadow">
-                    <option value="" disabled selected>Select a primary service...</option>
+                  <select id="service" name="service" defaultValue="" required className="w-full p-3 rounded-lg border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none transition-shadow">
+                    <option value="" disabled>Select a primary service...</option>
                     <option value="infrastructure">IT Infrastructure Support</option>
                     <option value="ecommerce">eCommerce Business Support</option>
                     <option value="saas">SaaS Business Support</option>
@@ -131,11 +159,13 @@ export default function Consultation() {
                 
                 <div className="flex flex-col gap-2">
                   <label htmlFor="message" className="font-semibold text-gray-700 dark:text-gray-300 text-sm">Project Details</label>
-                  <textarea id="message" rows={4} className="w-full p-3 rounded-lg border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none transition-shadow resize-none" placeholder="Briefly describe your current setup and goals..."></textarea>
+                  <textarea id="message" name="message" rows={4} className="w-full p-3 rounded-lg border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none transition-shadow resize-none" placeholder="Briefly describe your current setup and goals..."></textarea>
                 </div>
+
+                {error && <p className="text-red-500 text-sm">{error}</p>}
                 
-                <button type="submit" className="w-full mt-2 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg shadow-md hover:shadow-lg transition-all text-lg">
-                  Request Free Consultation
+                <button type="submit" disabled={isLoading} className="w-full mt-2 py-4 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-bold rounded-lg shadow-md hover:shadow-lg transition-all text-lg flex items-center justify-center gap-2">
+                  {isLoading ? 'Sending Request...' : 'Request Free Consultation'}
                 </button>
               </form>
             </div>
