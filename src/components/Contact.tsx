@@ -1,4 +1,5 @@
 import { Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function Contact() {
   return (
@@ -94,12 +95,21 @@ export default function Contact() {
               ></textarea>
             </div>
 
-            <button 
-              type="button" 
-              className="w-full mt-2 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg shadow-md hover:shadow-lg transition-all"
-            >
-              Submit Message
-            </button>
+            <div className="flex flex-col gap-3 mt-2">
+              <button 
+                type="button" 
+                className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg shadow-md hover:shadow-lg transition-all"
+              >
+                Submit Message
+              </button>
+              
+              <Link 
+                to="/consultation" 
+                className="w-full py-3 bg-yellow-500 hover:bg-yellow-600 text-slate-900 font-bold rounded-lg shadow-md hover:shadow-lg transition-all text-center"
+              >
+                Free Consult
+              </Link>
+            </div>
           </form>
         </div>
       </div>
